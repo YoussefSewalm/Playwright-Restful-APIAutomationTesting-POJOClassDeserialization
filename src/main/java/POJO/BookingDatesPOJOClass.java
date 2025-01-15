@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 public class BookingDatesPOJOClass {
 	
-	    private String checkin;
+        private String checkin;
         private String checkout;
 
 }
