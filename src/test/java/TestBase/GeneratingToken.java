@@ -15,9 +15,9 @@ import PlayWrightFactory.InitializePlaywright;
 
 public class GeneratingToken {
 	
-	public APIRequestContext requestContext;
-	public APIResponse apipostresponse;
-	public RequestOptions requestOptions;
+    public APIRequestContext requestContext;
+    public APIResponse apipostresponse;
+    public RequestOptions requestOptions;
     public TokenPOJOClass Token_Data;
     public APIResponse apiputresponse;
     public APIResponse apigetresponse;
@@ -28,11 +28,6 @@ public class GeneratingToken {
 @BeforeClass
 public void StartSetup() throws IOException
 {
-	/*
-	byte [] fileBytes = null;  //h3ml initialize ll array bytes
-    File file = new File(System.getProperty("user.dir")+"/src/test/java/resources/TokenData.json");
-    fileBytes = Files.readAllBytes(file.toPath());
-    */
 	TokenPOJOClass tokendata = TokenPOJOClass.builder()
             .username("admin")
             .password("password123")
