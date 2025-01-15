@@ -20,9 +20,7 @@ import TestBase.GeneratingToken;
 
 public class CreatingUserThenUpdatingThenDeleting extends GeneratingToken{
 	
-			                               
-
-    
+			                                   
 	@DataProvider
 	public Object[][] UpdateBooking() throws IOException
 	{
@@ -46,13 +44,13 @@ public class CreatingUserThenUpdatingThenDeleting extends GeneratingToken{
 				                                      .totalprice(Integer.parseInt(input.get("totalpricebeforeupdate")))
 				                                      .depositpaid(Boolean.parseBoolean(input.get("Isdeposidpaid")))
 				                                      .bookingdates(BookingDatesBody)
-						                              .additionalneeds(input.get("additionalneeds"))
+						                      .additionalneeds(input.get("additionalneeds"))
 				                                      .build();
 	                                
 	    System.out.println("My Token is :"+Token_Data.getToken());
 
 	    //Creating User
-		apipostresponse = requestContext.post(input.get("Url")+"/booking", requestOptions
+	   apipostresponse = requestContext.post(input.get("Url")+"/booking", requestOptions
 				                        .setHeader("Content-Type", "application/json")
 				                        .setHeader("Accept", "application/json")
 				                        .setData(BookingUserDataBodyReq)	                        
@@ -65,7 +63,7 @@ public class CreatingUserThenUpdatingThenDeleting extends GeneratingToken{
 	   int IdBooking = DataAfterCreatingUser.getBookingid();
 	   System.out.println(IdBooking);
 	   
-       Assert.assertEquals(apipostresponse.status() , 200);
+           Assert.assertEquals(apipostresponse.status() , 200);
 	   Assert.assertEquals(DataAfterCreatingUser.getBooking().getFirstname(), BookingUserDataBodyReq.getFirstname());
 	   
 	   //Updating User
@@ -97,7 +95,6 @@ public class CreatingUserThenUpdatingThenDeleting extends GeneratingToken{
 		apigetresponse = requestContext.get(input.get("Url")+"/booking/"+String.valueOf(IdBooking), requestOptions
                 .setHeader("Content-Type", "application/json")
                 .setHeader("Accept", "application/json")
-                .setHeader("Cookie", "token="+Token_Data.getToken())
 				); 
 		
 		   String GETresponseText = apigetresponse.text();
@@ -114,8 +111,8 @@ public class CreatingUserThenUpdatingThenDeleting extends GeneratingToken{
                  .setHeader("Cookie", "token="+Token_Data.getToken())
  				); 
  		
- 		   String DELETEresponseText = apideleteresponse.text();
- 		   System.out.println(DELETEresponseText);
+               String DELETEresponseText = apideleteresponse.text();
+ 	       System.out.println(DELETEresponseText);
  	       Assert.assertEquals(apideleteresponse.status() , 201);
  	       Assert.assertEquals(apideleteresponse.statusText(), "Created");
 	}
